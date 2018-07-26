@@ -5,6 +5,8 @@ import (
 	"net"
 	"strings"
 
+	"github.com/spf13/viper"
+
 	"github.com/taktv6/tflow2/convert"
 )
 
@@ -38,6 +40,17 @@ func (g *Global) SetDefaultGlobalConfigValues() error {
 	}
 
 	return nil
+}
+
+func (g *Global) ReadGlobalConfigFile() error {
+	viper.SetConfigName("global")
+	viper.AddConfigPath("/etc/bio-rd/")
+	viper.AddConfigPath("$HOME/.bio-rd/")
+	viper.AddConfigPath(".")
+
+	err := viper.ReadInConfig()
+
+	return err
 }
 
 func generateRouterID() (uint32, error) {
