@@ -90,6 +90,7 @@ func _getHighestIP(ifs []net.Interface) (net.IP, error) {
 
 func getLoopbackIP() (net.IP, error) {
 	iface, err := net.InterfaceByName("lo")
+	fmt.Printf("%v", iface)
 	if err != nil {
 		return nil, fmt.Errorf("Unable to get interface lo: %v", err)
 	}

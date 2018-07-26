@@ -19,7 +19,6 @@ func strAddr(s string) uint32 {
 
 func main() {
 	logrus.Printf("This is a BGP speaker\n")
-
 	rib := locRIB.New()
 	b := server.NewBgpServer()
 	startServer(b, rib)
